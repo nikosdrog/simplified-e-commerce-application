@@ -1,0 +1,32 @@
+{
+  "name": "simplified-e-commerce-application",
+  "version": "1.0.0",
+  "description": "Simplified e-commerce application built with Vue.js and TypeScript for a Senior Front End Engineer assignment. Implements product search, shopping basket functionality, and unit testing.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "pinia": "^2.2.4",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "vue": "^3.5.10",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.20",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "vite": "^5.4.8"
+  }
+}
