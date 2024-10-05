@@ -26,17 +26,18 @@
   <!-- Modal Confirm Component -->
   <ModalConfirm
     :show="showModal"
-    :message="`Are you sure you want to remove ${product.title} from your cart?`"
+    :message="dynamicConfirmMessage"
     @confirm="removeProduct"
     @cancel="keepProduct"
   />
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import AddRemoveItems from '@/components/Common/AddRemoveItems.vue'
 import ModalConfirm from './Modal.vue'
 import { useBasketStore } from '@/stores/basketStore'
+import { useGenericStore } from '@/stores/genericStore'
 
 // Define props for the product and the tag
 const {
@@ -55,7 +56,23 @@ const {
 
 const showModal = ref(false) // State for showing the modal
 const basketStore = useBasketStore() // Get basket store
+const genericStore = useGenericStore()
 const localQuantity = ref(quantity) // Local quantity to sync with AddRemoveItems
+
+onMounted(async () => {
+  if (!genericStore.generic) {
+    await genericStore.loadGeneric() // Φορτώστε τα generic δεδομένα από το store
+  }
+})
+
+// Compute the dynamic confirmation message
+const dynamicConfirmMessage = computed(() => {
+  if (genericStore.generic && genericStore.generic.confirmRemove) {
+    const template = genericStore.generic.confirmRemove
+    return template.replace('{{productTitle}}', product.title)
+  }
+  return ''
+})
 
 // Watch for changes in the quantity prop and sync with localQuantity
 watch(

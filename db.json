@@ -5,11 +5,14 @@
     "emptyList": "No products found.",
     "emptyBtn": "Back to products",
     "basketTitle": "Your Basket",
-    "emptyBasket": "No items in your basket yet.",
-    "totalPrice": "Total Price",
+    "emptyBasket": "Your basket is empty",
+    "totalPrice": "Subtotal",
     "actionNeeded": "Action needed",
+    "confirmRemove": "Are you sure you want to remove {{productTitle}} from your cart?",
     "remove": "Remove",
-    "keep": "Keep"
+    "keep": "Keep",
+    "viewBasket": "View basket",
+    "quantity": "Quantity"
   },
   "products": [
     {
