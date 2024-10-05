@@ -39,7 +39,7 @@
       <p class="truncate unstyled small">{{ product.description }}</p>
       <div class="flex items-center gap-4 md:gap-8 mt-auto">
         <p class="unstyled !font-bold h2 md:h3">
-          ${{ product.price.toLocaleString('el-GR') }}
+          ${{ $formatNumber(product.price) }}
         </p>
         <div
           class="flex rounded-lg overflow-hidden transition bg-accent/85 hover:bg-accent w-48 md:w-64 h-12 max-md:ml-auto justify-between items-center"

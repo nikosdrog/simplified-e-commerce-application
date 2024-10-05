@@ -11,6 +11,7 @@ export const useGenericStore = defineStore('generic', {
         try {
           const response = await axios.get('http://localhost:3008/generic')
           this.generic = response.data
+          console.log('Loaded generic data:', this.generic) // Add console log for debugging
           localStorage.setItem('generic', JSON.stringify(this.generic)) // Save to local storage
         } catch (error) {
           console.error('Error loading generic data:', error)

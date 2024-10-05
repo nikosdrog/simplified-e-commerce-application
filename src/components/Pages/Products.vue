@@ -1,28 +1,28 @@
 <template>
   <main class="w-full p-4 md:p-8">
-    <ProductList>
-      <ProductItem
-        v-for="product in paginatedProducts"
-        :key="product.id"
-        :product="product"
-        :generic="genericStore.generic"
-      />
-    </ProductList>
-    <div v-if="paginatedProducts.length === 0 && genericStore.generic">
-      <h2 class="unstyled h1 pt-5 md:pt-20 text-center">
-        {{ genericStore.generic.emptyList }}
+    <EmptyList v-if="paginatedProducts.length === 0">{{
+      genericStore.generic.emptyList
+    }}</EmptyList>
+    <template v-else>
+      <h2 v-if="genericStore.generic" class="unstyled h1 pb-8">
+        {{ genericStore.generic.productTitle }}
       </h2>
-      <router-link to="/" class="unstyled text-accent h2 mx-auto underline">{{
-        genericStore.generic.emptyBtn
-      }}</router-link>
-    </div>
+      <ProductList>
+        <ProductItem
+          v-for="product in paginatedProducts"
+          :key="product.id"
+          :product="product"
+          :generic="genericStore.generic"
+        />
+      </ProductList>
 
-    <Pagination
-      v-if="paginatedProducts.length !== 0"
-      :currentPage="currentPage"
-      :totalPages="totalPages"
-      @updatePage="updatePage"
-    />
+      <Pagination
+        v-if="paginatedProducts.length !== 0"
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @updatePage="updatePage"
+      />
+    </template>
   </main>
 </template>
 
@@ -34,6 +34,7 @@ import { useGenericStore } from '@/stores/genericStore'
 import ProductItem from '@/components/Product/ProductItem.vue'
 import ProductList from '@/components/Product/ProductList.vue'
 import Pagination from '@/components/Pagination/Main.vue'
+import EmptyList from '@/components/Common/EmptyList.vue'
 
 const isLoading = ref(false)
 const hasError = ref(false)
