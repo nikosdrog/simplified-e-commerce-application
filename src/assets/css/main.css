@@ -1,2 +1,9 @@
 /* Tailwind Directives */
 @import 'partials/tailwind.css';
+
+/* Core Styles */
+@import 'partials/core.css';
+
+/* Typography Settings */
+@import 'partials/typography.css';
+@import 'partials/typography-next.css';

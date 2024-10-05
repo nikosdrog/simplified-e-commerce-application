@@ -1,0 +1,25 @@
+/* Stylesheet: typography.css */
+
+@layer base {
+    /* === Headings === */
+    h1:not(.unstyled) {
+        @apply text-4xl md:text-[40px] lg:text-5xl font-semibold;
+    }
+    h2:not(.unstyled) {
+        @apply text-2xl md:text-[28px] lg:text-[40px] font-medium;
+    }
+    h3:not(.unstyled) {
+        @apply text-base md:text-lg xl:text-2xl font-medium;
+    }
+    h4:not(.unstyled) {
+        @apply text-xl font-medium;
+    }
+
+    /* === Elements === */
+    p:not(.unstyled) {
+        @apply text-base lg:text-xl;
+    }
+    a:not(.unstyled) {
+        @apply text-lg md:text-base;
+    }
+}

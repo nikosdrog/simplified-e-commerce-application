@@ -1,0 +1,144 @@
+{
+  "generic": {
+    "addToCart": "Add to cart",
+    "emptyList": "No products found for this page."
+  },
+  "products": [
+    {
+      "id": 1,
+      "title": "Cloud Storage Solution 100GB",
+      "price": 9.99,
+      "description": "Reliable cloud storage for your personal and business needs with 100GB of space.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 2,
+      "title": "Cloud Backup Service",
+      "price": 19.99,
+      "description": "Automated cloud backup service for secure data protection.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 3,
+      "title": "Virtual Private Cloud (VPC)",
+      "price": 49.99,
+      "description": "Secure and customizable virtual private cloud for your enterprise.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 4,
+      "title": "Cloud Database Service",
+      "price": 99.99,
+      "description": "Scalable and highly available database solution in the cloud.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 5,
+      "title": "Cloud Compute Instance",
+      "price": 29.99,
+      "description": "High-performance cloud compute instance with customizable resources.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 6,
+      "title": "Cloud Hosting Platform",
+      "price": 14.99,
+      "description": "Affordable and fast cloud hosting platform for websites and applications.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 7,
+      "title": "Content Delivery Network (CDN)",
+      "price": 39.99,
+      "description": "Global content delivery network for faster website load times.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 8,
+      "title": "Serverless Computing Service",
+      "price": 24.99,
+      "description": "Run code in the cloud without managing servers with our serverless computing platform.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 9,
+      "title": "Cloud Monitoring & Analytics",
+      "price": 59.99,
+      "description": "Comprehensive cloud monitoring and analytics tool to track your cloud infrastructure.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 10,
+      "title": "Cloud Security Solution",
+      "price": 79.99,
+      "description": "Advanced security tools to protect your cloud-based resources and applications.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 11,
+      "title": "Cloud File Sharing",
+      "price": 11.99,
+      "description": "Easily share files across your team with our secure cloud file sharing service.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 12,
+      "title": "Cloud Load Balancer",
+      "price": 44.99,
+      "description": "Distribute traffic across multiple servers with our efficient cloud load balancer.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 13,
+      "title": "Cloud-based AI Service",
+      "price": 149.99,
+      "description": "Leverage the power of AI with our cloud-based artificial intelligence service.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 14,
+      "title": "Cloud VPN Service",
+      "price": 25.99,
+      "description": "Secure your network traffic with our cloud VPN service.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 15,
+      "title": "Managed Cloud Kubernetes",
+      "price": 89.99,
+      "description": "Deploy and manage containerized applications with our managed Kubernetes service.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 16,
+      "title": "Cloud Migration Service",
+      "price": 199.99,
+      "description": "Seamlessly migrate your infrastructure and data to the cloud.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    },
+    {
+      "id": 17,
+      "title": "Cloud Disaster Recovery",
+      "price": 299.99,
+      "description": "Ensure business continuity with our robust cloud disaster recovery service.",
+      "image": "https://placehold.co/150x180",
+      "mobileImage": "https://placehold.co/420x315"
+    }
+  ]
+}

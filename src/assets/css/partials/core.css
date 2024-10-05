@@ -1,0 +1,5 @@
+@layer base {
+    .visually-hidden {
+        @apply h-px overflow-hidden absolute whitespace-nowrap w-px;
+    }
+}
