@@ -1,4 +1,8 @@
 @layer base {
+    /* Global scrollbar for the whole app */
+    * {
+        @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent;
+    }
     .visually-hidden {
         @apply h-px overflow-hidden absolute whitespace-nowrap w-px;
     }

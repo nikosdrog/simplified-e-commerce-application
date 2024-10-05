@@ -7,9 +7,12 @@ module.exports = {
       fontFamily: {
         sans: ['Afacad Flux', 'sans-serif'],
       },
+      borderRadius: {
+        scrollbar: '10px',
+      },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('tailwind-scrollbar')],
   daisyui: {
     themes: ['light', 'dark'], // Προσθήκη των διαθέσιμων themes
   },
