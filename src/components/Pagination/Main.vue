@@ -19,7 +19,7 @@
 
       <!-- Current Page -->
       <button
-        class="join-item btn btn-lg btn-accent"
+        class="join-item btn btn-lg btn-accent pointer-events-none"
         aria-current="page"
         :aria-label="`Page ${currentPage}`"
       >

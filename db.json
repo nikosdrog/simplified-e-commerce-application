@@ -1,7 +1,11 @@
 {
   "generic": {
     "addToCart": "Add to cart",
-    "emptyList": "No products found for this page."
+    "emptyList": "No products found for this page.",
+    "emptyBtn": "Back to products",
+    "basketTitle": "Your Basket",
+    "emptyBasket": "No items in your basket yet.",
+    "totalPrice": "Total Price"
   },
   "products": [
     {

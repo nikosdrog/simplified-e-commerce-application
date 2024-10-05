@@ -45,12 +45,13 @@
           class="flex rounded-lg overflow-hidden transition bg-accent/85 hover:bg-accent w-48 md:w-64 h-12 max-md:ml-auto justify-between items-center"
           aria-live="polite"
         >
-          <!-- Conditional rendering of button or AddRemoveItems component -->
+          <!-- If the product is in the cart, show AddRemoveItems component -->
           <AddRemoveItems
-            v-if="isInCart"
-            :initialQuantity="quantity"
-            @quantityChange="handleQuantityChange"
+            v-if="quantityInCart > 0"
+            :initialQuantity="quantityInCart"
+            @quantityChange="updateCartQuantity"
           />
+          <!-- Show Add to Cart button if the product is not in the cart -->
           <button
             v-else
             class="small text-accent-content font-medium block w-full h-full text-center"
@@ -66,8 +67,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import AddRemoveItems from './AddRemoveItems.vue'
+import { onMounted, computed } from 'vue'
+import AddRemoveItems from '@/components/Common/AddRemoveItems.vue'
+import { useBasketStore } from '@/stores/basketStore'
 
 // Define props for the product and generic object
 const {
@@ -90,23 +92,27 @@ const {
   tag?: string
 }>()
 
-// State to manage whether the item is in the cart
-const isInCart = ref(false)
-const quantity = ref(1)
+// Get basket store
+const basketStore = useBasketStore()
 
-// Function to add the item to the cart (show AddRemoveItems)
+// Load basket items from localStorage on page load
+onMounted(() => {
+  basketStore.loadBasket()
+})
+
+// Compute the quantity of the current product in the basket
+const quantityInCart = computed(() => {
+  const item = basketStore.items.find((item) => item.product.id === product.id)
+  return item ? item.quantity : 0
+})
+
+// Function to add the item to the cart
 const addToCart = () => {
-  isInCart.value = true
+  basketStore.addToBasket(product)
 }
 
-// Handle quantity changes from AddRemoveItems
-const handleQuantityChange = (newQuantity: number) => {
-  quantity.value = newQuantity
-
-  // If quantity goes back to 0, remove from cart
-  if (quantity.value === 0) {
-    isInCart.value = false
-    quantity.value = 1 // Reset quantity when removed from cart
-  }
+// Function to update the quantity in the cart
+const updateCartQuantity = (newQuantity: number) => {
+  basketStore.updateQuantity(product.id, newQuantity)
 }
 </script>

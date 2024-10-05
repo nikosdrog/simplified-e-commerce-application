@@ -5,15 +5,18 @@
         v-for="product in paginatedProducts"
         :key="product.id"
         :product="product"
-        :generic="generic"
+        :generic="genericStore.generic"
       />
     </ProductList>
-    <h2
-      v-if="paginatedProducts.length === 0"
-      class="unstyled h1 pt-5 md:pt-20 text-center"
-    >
-      {{ generic.emptyList }}
-    </h2>
+    <div v-if="paginatedProducts.length === 0 && genericStore.generic">
+      <h2 class="unstyled h1 pt-5 md:pt-20 text-center">
+        {{ genericStore.generic.emptyList }}
+      </h2>
+      <router-link to="/" class="unstyled text-accent h2 mx-auto underline">{{
+        genericStore.generic.emptyBtn
+      }}</router-link>
+    </div>
+
     <Pagination
       v-if="paginatedProducts.length !== 0"
       :currentPage="currentPage"
@@ -22,18 +25,19 @@
     />
   </main>
 </template>
+
 <script setup lang="ts">
 import axios from 'axios'
-import { onMounted, ref, computed, watch } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import ProductItem from '../Product/ProductItem.vue'
-import ProductList from '../Product/ProductList.vue'
-import Pagination from '../Pagination/Main.vue'
+import { useGenericStore } from '@/stores/genericStore'
+import ProductItem from '@/components/Product/ProductItem.vue'
+import ProductList from '@/components/Product/ProductList.vue'
+import Pagination from '@/components/Pagination/Main.vue'
 
 const isLoading = ref(false)
 const hasError = ref(false)
 const products = ref([])
-const generic = ref([])
 
 // Get the current page from the query parameter in the route
 const route = useRoute()
@@ -41,14 +45,19 @@ const router = useRouter()
 const currentPage = ref(parseInt(route.query.page as string) || 1)
 const productsPerPage = ref(6) // Number of products per page
 
+// Get the generic store
+const genericStore = useGenericStore()
+
 onMounted(async () => {
+  // Load generic data from the store or from localStorage
+  genericStore.loadFromLocalStorage()
+  if (!genericStore.generic) {
+    await genericStore.loadGeneric()
+  }
+
   isLoading.value = true
   try {
-    const [responseGeneric, responseProducts] = await Promise.all([
-      axios.get('http://localhost:3008/generic'),
-      axios.get('http://localhost:3008/products'),
-    ])
-    generic.value = responseGeneric.data
+    const responseProducts = await axios.get('http://localhost:3008/products')
     products.value = responseProducts.data
   } catch (error) {
     hasError.value = true
