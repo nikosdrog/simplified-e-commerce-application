@@ -81,12 +81,9 @@
               <span class="text-lg font-bold">8 Items</span>
               <span class="text-info">Subtotal: $999</span>
               <div class="card-actions">
-                <button
-                  class="btn btn-primary btn-block"
-                  aria-label="View cart"
+                <router-link to="/basket" class="btn btn-accent btn-block"
+                  >View cart</router-link
                 >
-                  View cart
-                </button>
               </div>
             </div>
           </div>
