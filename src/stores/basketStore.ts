@@ -60,8 +60,6 @@ export const useBasketStore = defineStore('basket', {
     saveBasket() {
       localStorage.setItem('basket', JSON.stringify(this.items))
     },
-
-    // Clear the entire basket
     clearBasket() {
       this.items = []
       this.saveBasket() // Save the empty state
