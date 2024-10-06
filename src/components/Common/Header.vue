@@ -11,19 +11,10 @@
         </router-link>
       </div>
       <div class="flex-none">
-        <!--Search bar-->
-        <div class="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            class="input input-bordered w-24 md:w-auto"
-          />
-        </div>
         <!--Theme switcher-->
         <label class="btn btn-ghost btn-circle swap swap-rotate ml-2">
           <!-- This hidden checkbox controls the theme change -->
           <input type="checkbox" @change="toggleTheme" />
-
           <!-- Sun icon for light theme -->
           <svg
             class="h-7 w-7"
