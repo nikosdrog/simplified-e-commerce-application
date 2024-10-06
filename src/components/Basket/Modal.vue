@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useGenericStore } from '@/stores/genericStore'
 
 // Load the generic data from the store
