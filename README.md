@@ -49,3 +49,11 @@ I made sure to include console logging in API requests, like fetching products a
 I also set up a **mock server** using **JSON Server** to simulate backend functionality and serve the product data, ensuring smooth development and testing without needing an actual backend.
 
 Finally, i wrote **unit tests** using **Vitest** for the critical components of the application. This helped me ensure the reliability and correctness of the core functionality.
+
+### Any challenges i faced and how i overcame them
+
+One of the challenges i faced was how to complete the application more efficiently and quickly. To solve this, i decided to integrate **DaisyUI**, which allowed me to avoid spending extra time on designing certain UI elements from scratch.
+
+Another challenge was that i had never written unit tests before. To overcome this, i used **ChatGPT** for guidance, which helped me understand the process and successfully implement the tests for key components.
+
+I also wanted to make the user experience (UX) as functional as possible. To achieve this, i researched what major websites like **Skroutz** were doing and incorporated some of their UX principles into my project.
