@@ -1,13 +1,21 @@
 <template>
   <main class="w-full p-4 md:p-8">
-    <EmptyList v-if="paginatedProducts.length === 0">{{
-      genericStore.generic.emptyList
-    }}</EmptyList>
+    <!-- Product Title -->
+    <h2 v-if="genericStore.generic" class="unstyled h1 pb-8">
+      {{ genericStore.generic.productTitle }}
+    </h2>
+    <!-- Product Search -->
+    <ProductSearch v-model="searchQuery" @search="handleSearch" />
+    <EmptyList
+      v-if="paginatedProducts.length === 0"
+      :searchQuery="searchQuery"
+      @clearSearch="clearSearch"
+      >{{ genericStore.generic.emptyList }}</EmptyList
+    >
     <template v-else>
-      <h2 v-if="genericStore.generic" class="unstyled h1 pb-8">
-        {{ genericStore.generic.productTitle }}
-      </h2>
+      <!-- Product List -->
       <ProductList>
+        <!-- Product Item -->
         <ProductItem
           v-for="product in paginatedProducts"
           :key="product.id"
@@ -15,7 +23,7 @@
           :generic="genericStore.generic"
         />
       </ProductList>
-
+      <!-- Pagination -->
       <Pagination
         v-if="paginatedProducts.length !== 0"
         :currentPage="currentPage"
@@ -33,12 +41,14 @@ import { useRoute, useRouter } from 'vue-router'
 import { useGenericStore } from '@/stores/genericStore'
 import ProductItem from '@/components/Product/ProductItem.vue'
 import ProductList from '@/components/Product/ProductList.vue'
-import Pagination from '@/components/Pagination/Main.vue'
+import Pagination from '@/components/Common/Pagination.vue'
 import EmptyList from '@/components/Common/EmptyList.vue'
+import ProductSearch from '@/components/Product/ProductSearch.vue'
 
 const isLoading = ref(false)
 const hasError = ref(false)
 const products = ref([])
+const searchQuery = ref('')
 
 // Get the current page from the query parameter in the route
 const route = useRoute()
@@ -49,13 +59,47 @@ const productsPerPage = ref(6) // Number of products per page
 // Get the generic store
 const genericStore = useGenericStore()
 
-onMounted(async () => {
-  // Load generic data from the store or from localStorage
-  genericStore.loadFromLocalStorage()
-  if (!genericStore.generic) {
-    await genericStore.loadGeneric()
+// Filtered products based on search query
+const filteredProducts = computed(() => {
+  if (searchQuery.value.length >= 0) {
+    // Filter products by title
+    return products.value.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
+    )
   }
+  return products.value
+})
 
+// Compute the total number of pages for filtered products
+const totalPages = computed(() =>
+  Math.ceil(filteredProducts.value.length / productsPerPage.value),
+)
+
+// Compute the products to display based on the current page and filtered results
+const paginatedProducts = computed(() => {
+  const start = (currentPage.value - 1) * productsPerPage.value
+  const end = start + productsPerPage.value
+  return filteredProducts.value.slice(start, end)
+})
+
+// Handle search input from the search component
+const handleSearch = (query) => {
+  searchQuery.value = query
+  currentPage.value = 1 // Reset to first page after search
+}
+
+// Clear search
+const clearSearch = () => {
+  searchQuery.value = ''
+}
+
+// Handle page change event from Pagination component
+const updatePage = (newPage: number) => {
+  // Update the URL to include the new page number as a query parameter
+  router.push({ query: { ...route.query, page: newPage.toString() } })
+}
+
+onMounted(async () => {
   isLoading.value = true
   try {
     const responseProducts = await axios.get('http://localhost:3008/products')
@@ -75,22 +119,4 @@ watch(
     currentPage.value = parseInt(newPage as string) || 1
   },
 )
-
-// Compute the total number of pages
-const totalPages = computed(() =>
-  Math.ceil(products.value.length / productsPerPage.value),
-)
-
-// Compute the products to display based on the current page
-const paginatedProducts = computed(() => {
-  const start = (currentPage.value - 1) * productsPerPage.value
-  const end = start + productsPerPage.value
-  return products.value.slice(start, end)
-})
-
-// Handle page change event from Pagination component
-const updatePage = (newPage: number) => {
-  // Update the URL to include the new page number as a query parameter
-  router.push({ query: { ...route.query, page: newPage.toString() } })
-}
 </script>

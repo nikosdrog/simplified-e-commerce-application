@@ -10,6 +10,7 @@
       v-if="genericStore.generic"
       to="/"
       class="unstyled text-accent h2 mx-auto underline"
+      @click="handleClearSearch"
       >{{ genericStore.generic.emptyBtn }}</router-link
     >
   </div>
@@ -20,6 +21,13 @@ import { onMounted } from 'vue'
 
 // Get the generic store
 const genericStore = useGenericStore()
+
+// Emit event for the clearSearch
+const emit = defineEmits(['clearSearch'])
+
+const handleClearSearch = () => {
+  emit('clearSearch')
+}
 
 onMounted(async () => {
   // Load generic data from the store or from localStorage
