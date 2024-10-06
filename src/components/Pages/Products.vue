@@ -33,7 +33,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useGenericStore } from '@/stores/genericStore'
 import ProductItem from '@/components/Product/ProductItem.vue'
 import ProductList from '@/components/Product/ProductList.vue'
-import Pagination from '@/components/Pagination/Main.vue'
+import Pagination from '@/components/Common/Pagination.vue'
 import EmptyList from '@/components/Common/EmptyList.vue'
 
 const isLoading = ref(false)
