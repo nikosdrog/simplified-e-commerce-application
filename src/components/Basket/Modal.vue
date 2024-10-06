@@ -11,6 +11,7 @@
           <button
             v-if="genericStore.generic?.remove"
             class="btn btn-error"
+            aria-label="Remove product"
             @click="onConfirm"
           >
             {{ genericStore.generic.remove }}
@@ -18,6 +19,7 @@
           <button
             v-if="genericStore.generic?.keep"
             class="btn btn-success"
+            aria-label="Keep product"
             @click="onCancel"
           >
             {{ genericStore.generic.keep }}

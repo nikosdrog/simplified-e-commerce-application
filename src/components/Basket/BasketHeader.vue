@@ -48,6 +48,7 @@
               </p>
               <button
                 class="btn btn-circle shrink-0"
+                aria-label="Remove product from basket"
                 @click.stop="removeFromBasket(item.product.id)"
               >
                 <svg
