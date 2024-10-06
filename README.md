@@ -57,3 +57,11 @@ One of the challenges i faced was how to complete the application more efficient
 Another challenge was that i had never written unit tests before. To overcome this, i used **ChatGPT** for guidance, which helped me understand the process and successfully implement the tests for key components.
 
 I also wanted to make the user experience (UX) as functional as possible. To achieve this, i researched what major websites like **Skroutz** were doing and incorporated some of their UX principles into my project.
+
+### Bonus and extra features i implemented
+
+The app is fully **responsive** and works across all screen sizes. I used **Tailwind CSS** to achieve this easily and efficiently. I also implemented **pagination**, which works both in the search results and the main product list, ensuring smooth navigation through the products.
+
+Additionally, I added a **dark mode** feature to enhance user experience by allowing users to switch between light and dark themes. I made sure to include all the optional requirements from the assignment to provide a complete solution.
+
+As an extra feature, I implemented a custom **AddRemoveItems** component. When no product is added to the cart, a button with text appears. Once you click the button, it dynamically shows the quantity selector, allowing the user to increase or decrease the number of items. In the **Basket view**, if the user tries to remove the last item by clicking the minus (-) button, a **modal** pops up asking whether they want to confirm the removal or keep the item in the basket.
