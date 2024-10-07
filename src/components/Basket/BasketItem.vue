@@ -33,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import AddRemoveItems from '@/components/Common/AddRemoveItems.vue'
 import ModalConfirm from './Modal.vue'
 import { useBasketStore } from '@/stores/basketStore'
-import { useGenericStore } from '@/stores/genericStore'
+import langItems from '@/lang/en.json'
 
 // Define props for the product and the tag
 const {
@@ -56,21 +56,11 @@ const {
 
 const showModal = ref(false) // State for showing the modal
 const basketStore = useBasketStore() // Get basket store
-const genericStore = useGenericStore()
-
-onMounted(async () => {
-  if (!genericStore.generic) {
-    await genericStore.loadGeneric()
-  }
-})
 
 // Compute the dynamic confirmation message
 const dynamicConfirmMessage = computed(() => {
-  if (genericStore.generic && genericStore.generic.confirmRemove) {
-    const template = genericStore.generic.confirmRemove
-    return template.replace('{{productTitle}}', product.title)
-  }
-  return ''
+  const template = langItems.confirmRemove
+  return template.replace('{{productTitle}}', product.title)
 })
 
 // Function to update the quantity in the cart

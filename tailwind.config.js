@@ -14,6 +14,6 @@ module.exports = {
   },
   plugins: [require('daisyui'), require('tailwind-scrollbar')],
   daisyui: {
-    themes: ['light', 'dark'], // Προσθήκη των διαθέσιμων themes
+    themes: ['light', 'dark'],
   },
 }

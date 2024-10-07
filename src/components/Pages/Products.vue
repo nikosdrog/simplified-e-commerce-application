@@ -1,8 +1,8 @@
 <template>
   <main class="w-full p-4 md:p-8">
     <!-- Product Title -->
-    <h2 v-if="genericStore.generic" class="unstyled h1 pb-8">
-      {{ genericStore.generic.productTitle }}
+    <h2 class="unstyled h1 pb-8">
+      {{ langItems.productTitle }}
     </h2>
     <!-- Product Search -->
     <ProductSearch v-model="searchQuery" @search="handleSearch" />
@@ -10,7 +10,7 @@
       v-if="paginatedProducts.length === 0"
       :searchQuery="searchQuery"
       @clearSearch="clearSearch"
-      >{{ genericStore.generic.emptyList }}</EmptyList
+      >{{ langItems.emptyList }}</EmptyList
     >
     <template v-else>
       <!-- Product List -->
@@ -20,7 +20,6 @@
           v-for="product in paginatedProducts"
           :key="product.id"
           :product="product"
-          :generic="genericStore.generic"
         />
       </ProductList>
       <!-- Pagination -->
@@ -38,7 +37,7 @@
 import axios from 'axios'
 import { onMounted, computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useGenericStore } from '@/stores/genericStore'
+import langItems from '@/lang/en.json'
 import ProductItem from '@/components/Product/ProductItem.vue'
 import ProductList from '@/components/Product/ProductList.vue'
 import Pagination from '@/components/Common/Pagination.vue'
@@ -55,9 +54,6 @@ const route = useRoute()
 const router = useRouter()
 const currentPage = ref(parseInt(route.query.page as string) || 1)
 const productsPerPage = ref(6) // Number of products per page
-
-// Get the generic store
-const genericStore = useGenericStore()
 
 // Filtered products based on search query
 const filteredProducts = computed(() => {

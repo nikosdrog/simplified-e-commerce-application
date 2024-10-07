@@ -52,14 +52,16 @@
             @quantityChange="updateCartQuantity"
           />
           <!-- Show Add to Cart button if the product is not in the cart -->
-          <button
-            v-else
-            class="small text-accent-content font-medium block w-full h-full text-center"
-            aria-label="Add product to basket"
-            @click="addToCart"
-          >
-            {{ generic.addToCart }}
-          </button>
+          <template v-else>
+            <button
+              v-if="true"
+              class="small text-accent-content font-medium block w-full h-full text-center"
+              aria-label="Add product to basket"
+              @click="addToCart"
+            >
+              {{ langItems.addToCart }}
+            </button>
+          </template>
         </div>
       </div>
     </div>
@@ -67,16 +69,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, watch } from 'vue'
 import AddRemoveItems from '@/components/Common/AddRemoveItems.vue'
 import { useBasketStore } from '@/stores/basketStore'
+import langItems from '@/lang/en.json'
 
-// Define props for the product and generic object
-const {
-  product,
-  generic,
-  tag = 'li',
-} = defineProps<{
+// Define props for the product
+const { product, tag = 'li' } = defineProps<{
   product: {
     id: number
     title: string
@@ -85,9 +84,6 @@ const {
     image: string
     mobileImage: string
     initialQuantity?: number // Optional prop for initial quantity
-  }
-  generic: {
-    addToCart: string
   }
   tag?: string
 }>()
