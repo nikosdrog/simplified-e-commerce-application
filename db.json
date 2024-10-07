@@ -1,19 +1,4 @@
 {
-  "generic": {
-    "addToCart": "Add to cart",
-    "productTitle": "Products",
-    "emptyList": "No products found.",
-    "emptyBtn": "Back to products",
-    "basketTitle": "Your Basket",
-    "emptyBasket": "Your basket is empty",
-    "totalPrice": "Subtotal",
-    "actionNeeded": "Action needed",
-    "confirmRemove": "Are you sure you want to remove {{productTitle}} from your cart?",
-    "remove": "Remove",
-    "keep": "Keep",
-    "viewBasket": "View basket",
-    "quantity": "Quantity"
-  },
   "products": [
     {
       "id": 1,

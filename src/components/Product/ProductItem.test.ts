@@ -20,7 +20,7 @@ describe('ProductItem.vue', () => {
   }
 
   const generic = {
-    addToCart: 'Add to Cart',
+    addToCart: 'Add to cart',
   }
 
   it('adds product to basket when "Add to Cart" is clicked', async () => {
@@ -37,7 +37,7 @@ describe('ProductItem.vue', () => {
     const basketStore = useBasketStore()
 
     // Simulate clicking "Add to Cart"
-    const button = getByText('Add to Cart')
+    const button = getByText('Add to cart')
     await fireEvent.click(button)
 
     // Check if the product is added to the basket
