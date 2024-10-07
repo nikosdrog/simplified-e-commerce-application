@@ -31,19 +31,21 @@
       class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-80 shadow absolute right-0"
     >
       <div class="card-body">
-        <template v-if="basketStore.items.length > 0">
+        <template v-if="basketStore.items && basketStore.items.length > 0">
           <div class="flex flex-col gap-3 max-h-72 overflow-auto">
             <!-- Show items in basket -->
             <div
               v-for="item in basketStore.items"
-              :key="item.product.id"
+              :key="item?.product.id"
               class="flex justify-between items-center"
             >
-              <p class="unstyled text-base truncate pr-4">
+              <p
+                v-if="item && item.product && item.quantity"
+                class="unstyled text-base truncate pr-4"
+              >
                 {{ item.product.title }}<br />
                 <span class="text-sm font-bold"
-                  >{{ genericStore.generic.quantity }}:
-                  {{ item.quantity }}</span
+                  >{{ langItems.quantity }}: {{ item.quantity }}</span
                 >
               </p>
               <button
@@ -68,31 +70,23 @@
             </div>
           </div>
           <span
-            v-if="genericStore.generic"
             class="text-base text-right border-t dark:border-neutral font-bold mt-3 pt-4 pb-2"
           >
-            {{ genericStore.generic.totalPrice }}: ${{
+            {{ langItems.totalPrice }}: ${{
               $formatNumber(basketStore.totalPrice)
             }}
           </span>
         </template>
         <!-- Empty basket message -->
         <template v-else>
-          <span
-            v-if="genericStore.generic"
-            class="text-base text-center font-bold"
-          >
-            {{ genericStore.generic.emptyBasket }}
+          <span class="text-base text-center font-bold">
+            {{ langItems.emptyBasket }}
           </span>
         </template>
 
-        <div
-          v-if="genericStore.generic"
-          class="card-actions"
-          @click="closeDropdown"
-        >
+        <div class="card-actions" @click="closeDropdown">
           <router-link to="/basket" class="btn btn-accent btn-block">{{
-            genericStore.generic.viewBasket
+            langItems.viewBasket
           }}</router-link>
         </div>
       </div>
@@ -103,11 +97,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useBasketStore } from '@/stores/basketStore'
-import { useGenericStore } from '@/stores/genericStore'
+import langItems from '@/lang/en.json'
 
 // Access the basket store
 const basketStore = useBasketStore()
-const genericStore = useGenericStore()
 
 // State to manage dropdown
 const dropdownOpen = ref(false)
@@ -149,8 +142,6 @@ const removeFromBasket = (productId: number) => {
 
 // Load the basket items and generic data from localStorage on page load
 onMounted(() => {
-  if (!genericStore.generic) {
-    genericStore.loadFromLocalStorage()
-  }
+  basketStore.loadBasket()
 })
 </script>

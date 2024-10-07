@@ -1,5 +1,5 @@
 # simplified-e-commerce-application
-Simplified e-commerce application built with Vue.js and TypeScript for a Senior Front End Engineer assignment. Implements product search, shopping basket functionality, and unit testing.
+Simplified e-commerce application built with Vue.js and TypeScript. Implements product search, shopping basket functionality, and unit testing.
 
 ### Instructions for setting up and running the project locally
 
@@ -36,13 +36,13 @@ Simplified e-commerce application built with Vue.js and TypeScript for a Senior 
 
 I chose to build this project using **Vue 3** with **TypeScript** to ensure type safety and take advantage of Vue's modern features like reactivity. I opted for **Vite** as the bundler because of its speed and smooth development experience, which significantly improved my workflow.
 
-For state management, I used **Pinia** since it's lightweight and works seamlessly with Vue 3, allowing me to efficiently handle the basket state across the application. The structure of the application follows a **component-based architecture**, which I designed to ensure modularity and reusability.
+For state management, i used **Pinia** since it's lightweight and works seamlessly with Vue 3, allowing me to efficiently handle the basket state across the application. The structure of the application follows a **component-based architecture**, which I designed to ensure modularity and reusability.
 
-I decided to use **TailwindCSS** for styling because of its utility-first approach, which sped up the design process. On top of that, I integrated **DaisyUI** for pre-built components that helped me save time on common UI elements. These tools helped me create a responsive and aesthetically pleasing UI without spending too much time on custom styles.
+I decided to use **TailwindCSS** for styling because of its utility-first approach, which sped up the design process. On top of that, i integrated **DaisyUI** for pre-built components that helped me save time on common UI elements. These tools helped me create a responsive and aesthetically pleasing UI without spending too much time on custom styles.
 
-To persist the basket state and generic data, i utilized **localStorage**. This decision allows users to maintain their session between page reloads, which I implemented in the `basketStore.ts` and `genericStore.ts`. Managing basket actions such as adding, removing, and updating quantities was an essential feature that I prioritized.
+To persist the basket state and generic data, i utilized **localStorage**. This decision allows users to maintain their session between page reloads, which i implemented in the `basketStore.ts`. Managing basket actions such as adding, removing, and updating quantities was an essential feature that i prioritized.
 
-For the product listing, I implemented **pagination** and **search functionality** to provide users with a seamless browsing experience. I used computed properties and watchers to dynamically update the products based on the search query and page number.
+For the product listing, i implemented **pagination** and **search functionality** to provide users with a seamless browsing experience. I used computed properties and watchers to dynamically update the products based on the search query and page number.
 
 I made sure to include console logging in API requests, like fetching products and generic data, for debugging purposes. This decision ensures that any errors during data fetching can be easily identified during development.
 
@@ -64,4 +64,4 @@ The app is fully **responsive** and works across all screen sizes. I used **Tail
 
 Additionally, I added a **dark mode** feature to enhance user experience by allowing users to switch between light and dark themes. I made sure to include all the optional requirements from the assignment to provide a complete solution.
 
-As an extra feature, I implemented a custom **AddRemoveItems** component. When no product is added to the cart, a button with text appears. Once you click the button, it dynamically shows the quantity selector, allowing the user to increase or decrease the number of items. In the **Basket view**, if the user tries to remove the last item by clicking the minus (-) button, a **modal** pops up asking whether they want to confirm the removal or keep the item in the basket.
+As an extra feature, i implemented a custom **AddRemoveItems** component. When no product is added to the cart, a button with text appears. Once you click the button, it dynamically shows the quantity selector, allowing the user to increase or decrease the number of items. In the **Basket view**, if the user tries to remove the last item by clicking the minus (-) button, a **modal** pops up asking whether they want to confirm the removal or keep the item in the basket.

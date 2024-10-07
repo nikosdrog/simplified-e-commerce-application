@@ -52,7 +52,13 @@ export const useBasketStore = defineStore('basket', {
     loadBasket() {
       const savedBasket = localStorage.getItem('basket')
       if (savedBasket) {
-        this.items = JSON.parse(savedBasket)
+        try {
+          this.items = JSON.parse(savedBasket) || []
+        } catch (error) {
+          this.items = [] // Initialize empty array if parsing fails
+        }
+      } else {
+        this.items = [] // Initialize empty basket if localStorage is empty
       }
     },
 

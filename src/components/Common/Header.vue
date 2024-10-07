@@ -14,7 +14,11 @@
         <!--Theme switcher-->
         <label class="btn btn-ghost btn-circle swap swap-rotate ml-2">
           <!-- This hidden checkbox controls the theme change -->
-          <input type="checkbox" @change="toggleTheme" />
+          <input
+            type="checkbox"
+            @change="toggleTheme"
+            aria-label="Toggle theme"
+          />
           <!-- Sun icon for light theme -->
           <svg
             class="h-7 w-7"
